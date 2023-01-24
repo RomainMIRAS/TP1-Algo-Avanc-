@@ -163,7 +163,9 @@ int largeur = 1;
 }
 
 int nbNoeudHauteur(Arbre_t a, int h) {
-    if (h == 0)
+    if (a == NULL)
+      return 0;
+    else if (h == 0)
       return 1 ;
     else
       return nbNoeudHauteur (a->fgauche, h-1) + nbNoeudHauteur (a->fdroite, h-1) ;
