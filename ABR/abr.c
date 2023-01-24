@@ -130,11 +130,36 @@ int hauteur_arbre_r (Arbre_t a)
 
 int hauteur_arbre_nr (Arbre_t a)
 {
-  /*
-    a completer
-  */
-  
-  return 0 ;
+  pfile_t file = creer_file();
+
+  enfiler(file,a);
+
+int hauteur = -1;
+int nextLargeur = 0;
+int largeur = 1;
+
+  while(!file_vide(file)){
+    pnoeud_t noeud = defiler(file);
+    printf("Noeud %d \n",noeud->cle);
+
+    if(noeud->fgauche != NULL){
+      enfiler(file,noeud->fgauche);
+      nextLargeur++;
+    }
+
+    if(noeud->fdroite != NULL){
+      enfiler(file,noeud->fdroite);
+      nextLargeur++;
+    }
+    largeur--;
+    if (largeur == 0) {
+      largeur == nextLargeur;
+      hauteur++;
+      nextLargeur = 0;
+    }
+  }
+
+  return hauteur;
 }
 
 
