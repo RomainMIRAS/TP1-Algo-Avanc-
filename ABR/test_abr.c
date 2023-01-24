@@ -37,16 +37,20 @@ int main (int argc, char**argv)
   printf("La hauteur it de l'arbre est : %d\n", hauteur_arbre_nr(a));
 
     printf("----------------\n");
-
-    printf("TEST HAUTEUR\n");
-    printf("La hauteur rec de l'arbre est : %d\n", hauteur_arbre_r(a));
-    printf("La hauteur it de l'arbre est : %d\n", hauteur_arbre_nr(a));
-
-    printf("----------------\n");
     
     printf("TEST NB CLEF\n");
-    printf("Le nombre de clef rec de l'arbre est : %d\n", nb_clef_arbre_r(a));
-    printf("Le nombre de clef it de l'arbre est : %d\n", nb_clef_arbre_nr(a));
+    printf("Le nombre de clef rec de l'arbre est : %d\n", nombre_cles_arbre_r(a));
+    printf("Le nombre de clef it de l'arbre est : %d\n", nombre_cles_arbre_nr(a));
+
+    printf("----------------\n");
+
+    printf("TEST NB NOEUD A UNE CERTAINE HAUTEUR\n");
+    printf("Le nombre de noeud de l'arbre à la hauteur %d est : %d\n", 4, nbNoeudHauteur(a, 4));
+
+    printf("----------------\n");
+
+    printf("TEST ARBRE PARFAIT\n");
+    printf("L'arbre est parfait ? : %d\n", arbre_parfait(a));
 
     printf("----------------\n");
 

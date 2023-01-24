@@ -19,6 +19,8 @@ int hauteur_arbre_nr (Arbre_t a) ;
 
 void parcourir_arbre_largeur (Arbre_t a) ;
 
+int nbNoeudHauteur(Arbre_t a, int h) ;
+
 void afficher_nombre_noeuds_par_niveau (Arbre_t a) ;
 
 int nombre_cles_arbre_r (Arbre_t a) ;

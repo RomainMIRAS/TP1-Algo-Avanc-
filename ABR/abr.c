@@ -162,6 +162,14 @@ int largeur = 1;
   return hauteur;
 }
 
+int nbNoeudHauteur(Arbre_t a, int h) {
+    if (a == NULL)
+      return 0;
+    else if (h == 0)
+      return 1 ;
+    else
+      return nbNoeudHauteur (a->fgauche, h-1) + nbNoeudHauteur (a->fdroite, h-1) ;
+}
 
 void parcourir_arbre_largeur (Arbre_t a)
 {
