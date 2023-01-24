@@ -292,8 +292,50 @@ int arbre_parfait (Arbre_t a)
       return -1;
     }
   }
-  return 1;
 
+  pfile_t file = creer_file();
+
+  enfiler(file,a);
+
+  int hauteurAct = -1;
+  int nextLargeur = 0;
+  int largeur = 1;
+
+  
+  pnoeud_t noeud;
+  while(hauteur-2 != hauteurAct) {
+    noeud = defiler(file);
+    largeur--;
+
+    if(noeud->fgauche != NULL){
+      enfiler(file,noeud->fgauche);
+      nextLargeur++;
+    }
+
+    if(noeud->fdroite != NULL){
+      enfiler(file,noeud->fdroite);
+      nextLargeur++;
+    }
+    
+    if (largeur == 0) {
+      largeur = nextLargeur;
+      hauteurAct++;
+      nextLargeur = 0;
+    }
+  }
+
+  int nbNoeudDerniereLigne = nbNoeudHauteur(a, hauteur);
+  int nbNoeudHauteurPrecedente = nbNoeudDerniereLigne % 2 == 0 ? nbNoeudDerniereLigne / 2 : (nbNoeudDerniereLigne + 1 ) / 2;
+
+  for (int i = 0; i < nbNoeudHauteurPrecedente-1; i++) {
+    noeud = defiler(file);
+    if (!(noeud->fgauche != NULL && noeud->fdroite != NULL)) {
+      return -1;
+    }
+  }
+
+  noeud = defiler(file);
+  return (nbNoeudHauteur(a, hauteur) % 2 != 0) ? noeud->fgauche != NULL : noeud->fgauche != NULL && noeud->fdroite != NULL;
 }
 
 
