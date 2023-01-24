@@ -239,18 +239,25 @@ void imprimer_liste_cle_triee_nr (Arbre_t a)
     a completer
   */
 
-  
   return ;
 }
 
 
 int arbre_plein (Arbre_t a)
 {
-  /*
-    a completer
-  */
-  
-  return 0 ;
+  // IMPLEMENTATION 1
+  // if (a == NULL) return 1;
+
+  // if (hauteur_arbre_r(a->fgauche) == hauteur_arbre_r(a->fdroite)){
+  //   return arbre_plein(a->fdroite) && arbre_plein(a->fgauche);
+  // } else {
+  //   return -1;
+  // }
+
+  // IMPLEMENTATION 2
+  int hauteur = hauteur_arbre_r(a);
+  int nombre_noeuds = nombre_cles_arbre_r(a);
+  return (nombre_noeuds == (pow(2,hauteur)-1));
 }
 
 int arbre_parfait (Arbre_t a)
@@ -267,21 +274,24 @@ int arbre_parfait (Arbre_t a)
 
 Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
 {
-  /*
-    a completer
-  */
-
-  return NULL ;
-  
+  if (a == NULL){
+    return a;
+  } else if (a->cle > valeur) {
+    return a;
+  } else {
+    return rechercher_cle_sup_arbre(a->fdroite,valeur);
+  }
 }
 
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
 {
-  /*
-    a completer
-  */
-
-  return NULL ;
+  if (a == NULL){
+    return a;
+  } else if (a->cle < valeur) {
+    return a;
+  } else {
+    return rechercher_cle_sup_arbre(a->fgauche,valeur);
+  }
   
 }
 
@@ -304,7 +314,6 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
   */
 
   return NULL ;
-  
 }
 
 Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2)
