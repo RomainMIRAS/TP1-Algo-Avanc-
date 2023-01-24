@@ -120,14 +120,12 @@ void afficher_arbre (Arbre_t a, int niveau)
   return ;
 }
 
-
 int hauteur_arbre_r (Arbre_t a)
 {
-  /*
-    a completer
-  */
-  
-  return 0 ;
+  if (a == NULL)
+    return 0 ;
+  else
+    return 1 + max (hauteur_arbre_r (a->fgauche), hauteur_arbre_r (a->fdroite)) ;
 }
 
 int hauteur_arbre_nr (Arbre_t a)
@@ -143,7 +141,7 @@ int hauteur_arbre_nr (Arbre_t a)
 void parcourir_arbre_largeur (Arbre_t a)
 {
   // Création de la file
-  ppile_t file = creer_pile();
+  pfile_t file = creer_file();
 
   enfiler(file,a);
   while(!file_vide(file)){
