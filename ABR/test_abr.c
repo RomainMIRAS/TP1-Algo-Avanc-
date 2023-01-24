@@ -21,4 +21,10 @@ int main (int argc, char**argv)
      appeler les fonctions que vous
      avez implementees
   */
+
+ // Test Hauteur
+
+  printf("TEST HAUTEUR\n");
+  printf("La hauteur rec de l'arbre est : %d\n", hauteur_arbre_r(a));
+  printf("La hauteur it de l'arbre est : %d\n", hauteur_arbre_nr(a));
 }

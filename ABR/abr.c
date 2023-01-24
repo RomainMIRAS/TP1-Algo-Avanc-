@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "pile.h"
 #include "file.h"
@@ -123,7 +124,7 @@ void afficher_arbre (Arbre_t a, int niveau)
 int hauteur_arbre_r (Arbre_t a)
 {
   if (a == NULL)
-    return 0 ;
+    return -1 ;
   else
     return 1 + max (hauteur_arbre_r (a->fgauche), hauteur_arbre_r (a->fdroite)) ;
 }
@@ -140,7 +141,6 @@ int largeur = 1;
 
   while(!file_vide(file)){
     pnoeud_t noeud = defiler(file);
-    printf("Noeud %d \n",noeud->cle);
 
     if(noeud->fgauche != NULL){
       enfiler(file,noeud->fgauche);
@@ -153,7 +153,7 @@ int largeur = 1;
     }
     largeur--;
     if (largeur == 0) {
-      largeur == nextLargeur;
+      largeur = nextLargeur;
       hauteur++;
       nextLargeur = 0;
     }
@@ -235,8 +235,12 @@ void imprimer_liste_cle_triee_r (Arbre_t a)
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
 {
-    pfile_t file = creer_file();
-    
+  /*
+    a completer
+  */
+
+  
+  return ;    
 }
 
 
@@ -252,9 +256,10 @@ int arbre_plein (Arbre_t a)
   // }
 
   // IMPLEMENTATION 2
-  int hauteur = hauteur_arbre_r(a);
-  int nombre_noeuds = nombre_cles_arbre_r(a);
-  return (nombre_noeuds == (pow(2,hauteur)-1));
+  // int hauteur = hauteur_arbre_r(a);
+  // int nombre_noeuds = nombre_cles_arbre_r(a);
+  // return (nombre_noeuds == (pow(2,hauteur)-1));
+  return 1;
 }
 
 int arbre_parfait (Arbre_t a)
