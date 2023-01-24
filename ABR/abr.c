@@ -195,11 +195,9 @@ void parcourir_arbre_largeur (Arbre_t a)
 
 void afficher_nombre_noeuds_par_niveau (Arbre_t a)
 {
-  /*
-    a completer
-  */
-
-  return ;
+  for (int i = 0; i <= hauteur_arbre_r(a); i++) {
+    printf("Noeud a la hauteur %d : %d\n", i, nbNoeudHauteur(a, i)) ;
+  }
 }
 
 
@@ -283,11 +281,15 @@ int arbre_plein (Arbre_t a)
 int arbre_parfait (Arbre_t a)
 {
   int hauteur = hauteur_arbre_r(a);
+  int nbNoeudH;
   for (int i = 0; i < hauteur; i++) {
     if (pow(2, i) != nbNoeudHauteur(a, i)) {
       return -1;
     }
   }
+
+  nbNoeudH = nbNoeudHauteur(a, hauteur);
+
   return 1;
 
 }

@@ -55,7 +55,7 @@ int main (int argc, char**argv)
     printf("----------------\n");
 
     printf("TEST NB NOEUD A UNE CERTAINE HAUTEUR\n");
-    printf("Le nombre de noeud de l'arbre à la hauteur %d est : %d\n", 4, nbNoeudHauteur(a, 4));
+    afficher_nombre_noeuds_par_niveau(a);
 
     printf("----------------\n");
 
