@@ -172,11 +172,10 @@ void afficher_nombre_noeuds_par_niveau (Arbre_t a)
 
 int nombre_cles_arbre_r (Arbre_t a)
 {
-  /*
-    a completer
-  */
-  
-  return 0 ;
+  if (a == NULL)
+    return 0 ;
+  else
+    return 1 + nombre_cles_arbre_r (a->fgauche) + nombre_cles_arbre_r (a->fdroite) ;
 }
 
 int nombre_cles_arbre_nr (Arbre_t a)
