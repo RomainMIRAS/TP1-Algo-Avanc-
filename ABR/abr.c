@@ -279,10 +279,9 @@ int arbre_plein (Arbre_t a)
   // }
 
   // IMPLEMENTATION 2
-  // int hauteur = hauteur_arbre_r(a);
-  // int nombre_noeuds = nombre_cles_arbre_r(a);
-  // return (nombre_noeuds == (pow(2,hauteur)-1));
-  return 1;
+  int hauteur = hauteur_arbre_r(a);
+  int nombre_noeuds = nombre_cles_arbre_r(a);
+  return (nombre_noeuds == (pow(2,hauteur+1)-1));
 }
 
 int arbre_parfait (Arbre_t a)
