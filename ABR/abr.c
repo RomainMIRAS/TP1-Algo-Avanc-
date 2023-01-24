@@ -195,9 +195,11 @@ void parcourir_arbre_largeur (Arbre_t a)
 
 void afficher_nombre_noeuds_par_niveau (Arbre_t a)
 {
-  for (int i = 0; i <= hauteur_arbre_r(a); i++) {
-    printf("Noeud a la hauteur %d : %d\n", i, nbNoeudHauteur(a, i)) ;
-  }
+  /*
+    a completer
+  */
+
+  return ;
 }
 
 
@@ -257,7 +259,11 @@ void imprimer_liste_cle_triee_r (Arbre_t a)
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
 {
-  return NULL;
+  /*
+    a completer
+  */
+
+  return ;
 }
 
 
@@ -281,15 +287,11 @@ int arbre_plein (Arbre_t a)
 int arbre_parfait (Arbre_t a)
 {
   int hauteur = hauteur_arbre_r(a);
-  int nbNoeudH;
   for (int i = 0; i < hauteur; i++) {
     if (pow(2, i) != nbNoeudHauteur(a, i)) {
       return -1;
     }
   }
-
-  nbNoeudH = nbNoeudHauteur(a, hauteur);
-
   return 1;
 
 }
@@ -299,25 +301,41 @@ int arbre_parfait (Arbre_t a)
 
 Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
 {
-  if (a == NULL){
-    return a;
-  } else if (a->cle > valeur) {
-    return a;
-  } else {
-    return rechercher_cle_sup_arbre(a->fdroite,valeur);
-  }
+   Arbre_t current = a;
+  //  if(current->cle > valeur) return current;
+
+   while(!estFeuille(current)){
+    if(current->cle <= valeur){
+      if(current->fdroite != NULL){
+        current = current->fdroite;
+      } else {
+        break;
+      }
+    } else {
+      return getFather(a,current);
+    }
+   }
+   return NULL;
 }
 
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
 {
-  if (a == NULL){
-    return a;
-  } else if (a->cle < valeur) {
-    return a;
-  } else {
-    return rechercher_cle_sup_arbre(a->fgauche,valeur);
-  }
-  
+      Arbre_t current = a;
+  //  if(current->cle < valeur) return current;
+
+   while(!estFeuille(current)){
+    if(current->cle >= valeur){
+      if(current->fgauche != NULL){
+        current = current->fgauche;
+      } else {
+        break;
+      }
+    } else {
+      return getFather(a,current);
+    }
+   }
+   return NULL;
+
 }
 
 int estFeuille(Arbre_t a){
@@ -332,8 +350,9 @@ Arbre_t searchABR(Arbre_t a, int clef){
     if (a->cle == clef){
       return a;
     } else {
-      searchABR(a->fgauche,clef);
-      searchABR(a->fdroite,clef);
+      Arbre_t fg = searchABR(a->fgauche,clef);
+      if (fg == NULL) return searchABR(a->fdroite,clef);
+      return fg;
     }
   }
 }
@@ -347,12 +366,19 @@ Arbre_t detruire_cle_arbre (Arbre_t a, int cle)
 
 
 Arbre_t getFather(Arbre_t a,Arbre_t son){
-  if (estFeuille(a)){
+
+  if (a == son ){
+    return NULL;
+  } else if (a==NULL) {
     return NULL;
   } else {
     if (a->fdroite == son || a->fgauche == son) return a;
-    getFather(a->fdroite,son);
-    getFather(a->fgauche,son); 
+
+    if (son->cle < a->cle) return getFather(a->fgauche,son);
+    if (son->cle > a->cle) return getFather(a->fgauche,son);
+
+    return NULL;
+
   }
 }
 
