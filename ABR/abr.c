@@ -213,32 +213,47 @@ int nombre_cles_arbre_r (Arbre_t a)
 
 int nombre_cles_arbre_nr (Arbre_t a)
 {
-  /*
-    a completer
-  */
-  
-  return 0 ;
+
+  int nb = 0;
+ // Création de la file
+  pfile_t file = creer_file();
+
+  enfiler(file,a);
+  while(!file_vide(file)){
+    pnoeud_t noeud = defiler(file);
+    nb++;
+    if(noeud->fgauche != NULL){
+      enfiler(file,noeud->fgauche);
+    }
+
+    if(noeud->fdroite != NULL){
+      enfiler(file,noeud->fdroite);
+    }    
+  }
+
+  return ;
 }
 
 int trouver_cle_min (Arbre_t a)
 {
-  /*
-    a completer
-  */
-
-  return 0 ; 
+  Arbre_t current = a;
+  while(current->fgauche != NULL){
+    current = current->fgauche;
+  }
+  return current->cle;
 }
 
  
 
 void imprimer_liste_cle_triee_r (Arbre_t a)
 {
-  /*
-    a completer
-  */
-
-  
-  return ;
+  if (a->fdroite == NULL && a->fgauche == NULL){
+    printf("Clef %d \n",a->cle);
+  } else {
+    imprimer_liste_cle_triee_r(a->fgauche);
+    printf("Clef %d \n",a->cle);
+    imprimer_liste_cle_triee_r(a->fdroite);
+  }
 }
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
@@ -264,10 +279,9 @@ int arbre_plein (Arbre_t a)
   // }
 
   // IMPLEMENTATION 2
-  // int hauteur = hauteur_arbre_r(a);
-  // int nombre_noeuds = nombre_cles_arbre_r(a);
-  // return (nombre_noeuds == (pow(2,hauteur)-1));
-  return 1;
+  int hauteur = hauteur_arbre_r(a);
+  int nombre_noeuds = nombre_cles_arbre_r(a);
+  return (nombre_noeuds == (pow(2,hauteur+1)-1));
 }
 
 int arbre_parfait (Arbre_t a)
