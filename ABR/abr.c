@@ -304,18 +304,14 @@ Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
    Arbre_t current = a;
   //  if(current->cle > valeur) return current;
 
-   while(!estFeuille(current)){
+   while(current != NULL){
     if(current->cle <= valeur){
-      if(current->fdroite != NULL){
         current = current->fdroite;
-      } else {
-        break;
-      }
     } else {
       return getFather(a,current);
     }
    }
-   return NULL;
+   return current;
 }
 
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
@@ -334,7 +330,7 @@ Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
       return getFather(a,current);
     }
    }
-   return NULL;
+   return (current->cle<valeur) ? current:NULL;
 
 }
 

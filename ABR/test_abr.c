@@ -69,9 +69,15 @@ int main (int argc, char**argv)
 
     printf("----------------\n");
 
-    printf("TEST RECH CLEF SUPP AU MIN\n");
+    printf("TEST PERE DU MINIMUM\n");
     int min = trouver_cle_min(a);
-    printf("Clef Suppérieur à %d: %d\n", min,rechercher_cle_sup_arbre(a,min)->cle);
+    printf("NOEUX du noeux minimim %d: %d\n", min,getFather(a,searchABR(a,min))->cle);
+
+    printf("----------------\n");
+
+    printf("TEST RECH CLEF SUPP AU MIN\n");
+    Arbre_t clef_supp = rechercher_cle_sup_arbre(a,min);
+    printf("Clef Suppérieur à %d: %d\n", min,(clef_supp != NULL) ? clef_supp->cle:0);
 
     printf("----------------\n");
 
