@@ -11,6 +11,15 @@ typedef pnoeud_t Arbre_t;
 
 Arbre_t lire_arbre (char *nom_fichier) ;
 
+int estFeuille(Arbre_t a);
+
+Arbre_t searchABR(Arbre_t a, int clef);
+
+/**
+ * PRECONDITION : a != NULL
+*/
+Arbre_t getFather(Arbre_t a,Arbre_t son);
+
 void afficher_arbre (Arbre_t a, int niveau) ;
 
 int hauteur_arbre_r (Arbre_t a) ;

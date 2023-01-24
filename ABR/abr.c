@@ -231,7 +231,7 @@ int nombre_cles_arbre_nr (Arbre_t a)
     }    
   }
 
-  return ;
+  return nb;
 }
 
 int trouver_cle_min (Arbre_t a)
@@ -247,6 +247,7 @@ int trouver_cle_min (Arbre_t a)
 
 void imprimer_liste_cle_triee_r (Arbre_t a)
 {
+  if (a == NULL) return;
   if (a->fdroite == NULL && a->fgauche == NULL){
     printf("Clef %d \n",a->cle);
   } else {
@@ -258,12 +259,7 @@ void imprimer_liste_cle_triee_r (Arbre_t a)
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
 {
-  /*
-    a completer
-  */
-
-  
-  return ;    
+  return NULL;
 }
 
 
@@ -322,17 +318,41 @@ Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
   
 }
 
+int estFeuille(Arbre_t a){
+  return a->fdroite== NULL && a->fgauche == NULL;
+}
 
-Arbre_t detruire_cle_arbre (Arbre_t a, int cle)
-{
-  /*
-    a completer
-  */
-
-  return NULL ;
+Arbre_t searchABR(Arbre_t a, int clef){
+  if (estFeuille(a)){
+    if (a->cle == clef) return a;
+    return NULL;
+  } else {
+    if (a->cle == clef){
+      return a;
+    } else {
+      searchABR(a->fgauche,clef);
+      searchABR(a->fdroite,clef);
+    }
+  }
 }
 
 
+Arbre_t detruire_cle_arbre (Arbre_t a, int cle)
+{
+  //TODO
+  return NULL;
+}
+
+
+Arbre_t getFather(Arbre_t a,Arbre_t son){
+  if (estFeuille(a)){
+    return NULL;
+  } else {
+    if (a->fdroite == son || a->fgauche == son) return a;
+    getFather(a->fdroite,son);
+    getFather(a->fgauche,son); 
+  }
+}
 
 Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 {

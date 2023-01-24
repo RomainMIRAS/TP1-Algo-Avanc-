@@ -44,13 +44,34 @@ int main (int argc, char**argv)
 
     printf("----------------\n");
 
+    printf("TEST CLEF TRIE REC\n");
+    imprimer_liste_cle_triee_r(a);
+
+    printf("----------------\n");
+
+    printf("TEST CLEF TRIE ITE\n");
+    imprimer_liste_cle_triee_nr(a);
+
+    printf("----------------\n");
+
     printf("TEST NB NOEUD A UNE CERTAINE HAUTEUR\n");
     printf("Le nombre de noeud de l'arbre à la hauteur %d est : %d\n", 4, nbNoeudHauteur(a, 4));
 
     printf("----------------\n");
 
+    printf("TEST ARBRE PLEIN\n");
+    printf("L'arbre est parfait ? : %s\n", (arbre_plein(a) == 1 ) ? "VRAI":"FAUX");
+
+    printf("----------------\n");
+
     printf("TEST ARBRE PARFAIT\n");
-    printf("L'arbre est parfait ? : %d\n", arbre_parfait(a));
+    printf("L'arbre est parfait ? : %s\n", (arbre_parfait(a) == 1 ) ? "VRAI":"FAUX");
+
+    printf("----------------\n");
+
+    printf("TEST RECH CLEF SUPP AU MIN\n");
+    int min = trouver_cle_min(a);
+    printf("Clef Suppérieur à %d: %d\n", min,rechercher_cle_sup_arbre(a,min)->cle);
 
     printf("----------------\n");
 
