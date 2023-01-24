@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "abr.h": "c",
+        "pile.h": "c"
+    }
+}
