@@ -272,11 +272,14 @@ int arbre_plein (Arbre_t a)
 
 int arbre_parfait (Arbre_t a)
 {
-  /*
-    a completer
-  */
-  
-  return 0 ;
+  int hauteur = hauteur_arbre_r(a);
+  for (int i = 0; i < hauteur; i++) {
+    if (pow(2, i) != nbNoeudHauteur(a, i)) {
+      return -1;
+    }
+  }
+  return 1;
+
 }
 
 
