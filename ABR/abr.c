@@ -210,11 +210,8 @@ void imprimer_liste_cle_triee_r (Arbre_t a)
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
 {
-  /*
-    a completer
-  */
-
-  return ;
+    pfile_t file = creer_file();
+    
 }
 
 
