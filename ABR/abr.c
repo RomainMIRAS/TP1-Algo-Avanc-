@@ -298,7 +298,7 @@ int arbre_parfait (Arbre_t a)
 
 
 
-
+//TODO
 Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
 {
    Arbre_t current = a;
@@ -314,6 +314,7 @@ Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
    return current;
 }
 
+//TODO
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
 {
       Arbre_t current = a;
@@ -378,6 +379,9 @@ Arbre_t getFather(Arbre_t a,Arbre_t son){
   }
 }
 
+/**
+ * INTERSECTION DES CLEFS DES DEUX ARBRES
+*/
 Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 {
   /*
@@ -387,6 +391,9 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
   return NULL ;
 }
 
+/**
+ * UNION DES CLEFS DES DEUX ARBRES
+*/
 Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2)
 {
   /*
