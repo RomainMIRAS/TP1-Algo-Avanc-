@@ -22,9 +22,32 @@ int main (int argc, char**argv)
      avez implementees
   */
 
+ // Test parcours largeur
+
+   printf("----------------\n");
+
+  printf("TEST PARCOURS LARGEUR\n");
+  parcourir_arbre_largeur(a);
  // Test Hauteur
+
+  printf("----------------\n");
 
   printf("TEST HAUTEUR\n");
   printf("La hauteur rec de l'arbre est : %d\n", hauteur_arbre_r(a));
   printf("La hauteur it de l'arbre est : %d\n", hauteur_arbre_nr(a));
+
+    printf("----------------\n");
+
+    printf("TEST HAUTEUR\n");
+    printf("La hauteur rec de l'arbre est : %d\n", hauteur_arbre_r(a));
+    printf("La hauteur it de l'arbre est : %d\n", hauteur_arbre_nr(a));
+
+    printf("----------------\n");
+    
+    printf("TEST NB CLEF\n");
+    printf("Le nombre de clef rec de l'arbre est : %d\n", nb_clef_arbre_r(a));
+    printf("Le nombre de clef it de l'arbre est : %d\n", nb_clef_arbre_nr(a));
+
+    printf("----------------\n");
+
 }
