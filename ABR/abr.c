@@ -408,11 +408,27 @@ Arbre_t searchABR(Arbre_t a, int clef){
   }
 }
 
-
+/**
+ * Réaliser avec les slides du cours
+*/
 Arbre_t detruire_cle_arbre (Arbre_t a, int cle)
 {
-  //TODO AVL
-  return NULL;
+  Arbre_t noeud = searchABR(a,cle);
+  if (noeud == NULL) return a;
+
+  Arbre_t pere = getFather(a,noeud);
+
+  if (estFeuille(a)){ // CAS A: x est une feuille
+    if (pere == NULL) return NULL;
+    if (pere->fgauche == noeud) pere->fgauche = NULL;
+    if (pere->fdroite == noeud) pere->fdroite = NULL;
+  } else if (noeud->fdroite == NULL || noeud->fgauche == NULL){ // Cas B: x est un nœud interne avec un seul sous-arbre
+    if (pere->fgauche == noeud) pere->fgauche = (noeud->fdroite == NULL) ? noeud->fgauche:noeud->fdroite;
+    if (pere->fdroite == noeud) pere->fdroite = (noeud->fdroite == NULL) ? noeud->fgauche:noeud->fdroite;
+  } else { // Cas C: x est un nœud interne avec 2 sous-arbres
+    return a; //TODO REPLACE THAT
+  }
+  return a;
 }
 
 
@@ -466,7 +482,7 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
     if (current->fgauche != NULL) enfiler(file,current->fgauche);
     if (current->fdroite != NULL) enfiler(file,current->fdroite);
   }
-  
+
   return list;
   
 }
