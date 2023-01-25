@@ -77,8 +77,20 @@ int main (int argc, char**argv)
 
     printf("TEST RECH CLEF SUPP AU MIN\n");
     Arbre_t clef_supp = rechercher_cle_sup_arbre(a,min);
-    printf("Clef Suppérieur à %d: %d\n", min,(clef_supp != NULL) ? clef_supp->cle:0);
+    if (clef_supp != NULL) {
+      printf("Clef Suppérieur à %d: %d\n", min, clef_supp->cle);
+    } else {
+      printf("Clef Suppérieur à %d: EXISTE PAS\n", min);
+    }
+    printf("----------------\n");
 
+    printf("TEST RECH CLEF INF AU MIN\n");
+    Arbre_t clef_inf = rechercher_cle_inf_arbre(a,min);
+    if (clef_inf != NULL) {
+      printf("Clef Suppérieur à %d: %d\n", min, clef_inf->cle);
+    } else {
+      printf("Clef Suppérieur à %d: EXISTE PAS\n", min);
+    }
     printf("----------------\n");
 
 }
