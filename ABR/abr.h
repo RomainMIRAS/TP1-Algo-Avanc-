@@ -46,6 +46,8 @@ int arbre_plein (Arbre_t a) ;
 
 int arbre_parfait (Arbre_t a) ;
 
+int containsKey(Arbre_t a, int valeur);
+
 Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur) ;
 
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur) ;

@@ -352,7 +352,6 @@ Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
    return current;
 }
 
-//TODO
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
 {
    Arbre_t current = a;
@@ -391,7 +390,7 @@ Arbre_t searchABR(Arbre_t a, int clef){
 
 Arbre_t detruire_cle_arbre (Arbre_t a, int cle)
 {
-  //TODO
+  //TODO AVL
   return NULL;
 }
 
@@ -413,16 +412,23 @@ Arbre_t getFather(Arbre_t a,Arbre_t son){
   }
 }
 
+int containsKey(Arbre_t a, int valeur){
+  if (a == NULL){
+    return -1;
+  } else {
+    if (a->cle == valeur) return 1;
+
+    return (containsKey(a->fdroite,valeur)||containsKey(a->fgauche,valeur));
+  }
+}
+
 /**
  * INTERSECTION DES CLEFS DES DEUX ARBRES
 */
 Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 {
-  /*
-    a completer
-  */
-
-  return NULL ;
+  Arbre_t a3 = NULL;
+  
 }
 
 /**
