@@ -195,9 +195,9 @@ void parcourir_arbre_largeur (Arbre_t a)
 
 void afficher_nombre_noeuds_par_niveau (Arbre_t a)
 {
-  /*
-    a completer
-  */
+  for (int i = 0; i <= hauteur_arbre_r(a); i++) {
+    printf("Nombre de noeud a la hauteur %d : %d\n", i, nbNoeudHauteur(a, i));
+  }
 
   return ;
 }
@@ -259,11 +259,7 @@ void imprimer_liste_cle_triee_r (Arbre_t a)
 
 void imprimer_liste_cle_triee_nr (Arbre_t a)
 {
-  /*
-    a completer
-  */
-
-  return ;
+  
 }
 
 
@@ -335,7 +331,7 @@ int arbre_parfait (Arbre_t a)
   }
 
   noeud = defiler(file);
-  return (nbNoeudHauteur(a, hauteur) % 2 != 0) ? noeud->fgauche != NULL : noeud->fgauche != NULL && noeud->fdroite != NULL;
+  return (nbNoeudDerniereLigne % 2 != 0) ? noeud->fgauche != NULL : noeud->fgauche != NULL && noeud->fdroite != NULL;
 }
 
 
