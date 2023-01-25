@@ -444,10 +444,28 @@ int containsKey(Arbre_t a, int valeur){
 /**
  * INTERSECTION DES CLEFS DES DEUX ARBRES
  * FONCTION CONTAINSKEY créer pour ça
+ * 
+ * POUR TOUT LES NOEUX DE a1
+ * SI LE NOEUD EST DANS a2
+ * ALORS ON L'AJOUTE A LA LISTE
 */
 Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 {
-  Arbre_t a3 = NULL;
+  Arbre_t current = a1;
+  Arbre_t list = NULL;
+  pfile_t file = creer_file();
+  enfiler(file,current);
+
+  while(!file_vide(file)){
+    current = defiler(file);
+    if (containsKey(a2,current->cle)){
+      list = inserer_cle_arbre(list,current->cle);
+    }
+    if (current->fgauche != NULL) enfiler(file,current->fgauche);
+    if (current->fdroite != NULL) enfiler(file,current->fdroite);
+  }
+  
+  return list;
   
 }
 
@@ -456,10 +474,5 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 */
 Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2)
 {
-  /*
-    a completer
-  */
-
-  return NULL ;
 }
 
