@@ -424,6 +424,7 @@ int containsKey(Arbre_t a, int valeur){
 
 /**
  * INTERSECTION DES CLEFS DES DEUX ARBRES
+ * FONCTION CONTAINSKEY créer pour ça
 */
 Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 {
