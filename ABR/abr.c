@@ -336,15 +336,15 @@ int arbre_parfait (Arbre_t a)
 
 
 
-//TODO
+
 Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
 {
    Arbre_t current = a;
   //  if(current->cle > valeur) return current;
 
    while(current != NULL){
-    if(current->cle <= valeur){
-        current = current->fdroite;
+    if(current->cle > valeur){
+        current = current->fgauche;
     } else {
       return getFather(a,current);
     }
@@ -355,21 +355,17 @@ Arbre_t rechercher_cle_sup_arbre (Arbre_t a, int valeur)
 //TODO
 Arbre_t rechercher_cle_inf_arbre (Arbre_t a, int valeur)
 {
-      Arbre_t current = a;
-  //  if(current->cle < valeur) return current;
+   Arbre_t current = a;
+  //  if(current->cle > valeur) return current;
 
-   while(!estFeuille(current)){
-    if(current->cle >= valeur){
-      if(current->fgauche != NULL){
+   while(current != NULL){
+    if(current->cle < valeur){
         current = current->fgauche;
-      } else {
-        break;
-      }
     } else {
       return getFather(a,current);
     }
    }
-   return (current->cle<valeur) ? current:NULL;
+   return current;
 
 }
 
