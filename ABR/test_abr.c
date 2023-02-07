@@ -93,4 +93,14 @@ int main (int argc, char**argv)
     }
     printf("----------------\n");
 
+
+    
+
+  printf("TEST UNION\n");
+  Arbre_t a2 = lire_arbre ("arbre2") ;
+  a = union_deux_arbres(a, a2);
+
+  afficher_arbre (a,0) ;
+    printf("----------------\n");
+
 }
