@@ -57,28 +57,3 @@ Arbre_t detruire_cle_arbre (Arbre_t a, int cle) ;
 Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2) ;
 
 Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2) ;
-
-/////////////////////////////////////
-// PARTIE AVL
-/////////////////////////////////////
-
-typedef struct noeud_AVL {
-int cle ;
-int bal ; /* balance comprise entre –1 et +1 */
-struct n *fgauche, *fdroite ;
-} noeud_AVL ;
-typedef noeud_AVL *Arbre_AVL_t ;
-
-void rotation_gauche (Arbre_AVL_t *a) ;
-
-void rotation_droite (Arbre_AVL_t *a) ;
-
-void double_rotation_gauche (Arbre_AVL_t *a) ;
-
-void double_rotation_droite (Arbre_AVL_t *a) ;
-
-void equilibrer_arbre (Arbre_AVL_t *a) ;
-
-void ajouter_cle_arbre_AVL (Arbre_AVL_t *a, int cle) ;
-
-void supprimer_cle_arbre_AVL (Arbre_AVL_t *a, int cle) ;
