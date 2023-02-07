@@ -72,21 +72,21 @@ int hauteur_arbre_AVL (Arbre_AVL_t a){
 
 Arbre_AVL_t equilibrer_arbre(Arbre_AVL_t a)
 {
-  if (a->bal == 2)
+  if (a->bal == 2){
     if (a->fdroite->bal >= 0)
       return rotation_gauche(a);
     else
     {
-      a = double_rotation_gauche(a);
+      return double_rotation_gauche(a);
     }
-  else if (a->bal == -2)
+   }else if (a->bal == -2){
     if (a->fgauche->bal <= 0)
       return rotation_droite(a);
     else
     {
-        a = double_rotation_droite(a);
+        return double_rotation_droite(a);
     }
-  else
+   } else
     return a;
 }
 
