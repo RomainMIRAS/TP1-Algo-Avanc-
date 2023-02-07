@@ -76,7 +76,25 @@ Arbre_AVL_t rotation_gauche(Arbre_AVL_t a){
 }
 
 Arbre_AVL_t rotation_droite(Arbre_AVL_t a) {
-        return NULL;
+  Arbre_AVL_t temp;
+
+  if (a->fgauche->fdroite == NULL) { //Cas ou B a pas de fils droit
+    if (a->fdroite == NULL) { //Cas ou B n'a pas de fils droit et A en a un
+
+    } else { //A et B n'ont pas de fils droit et de fils gauche
+
+    }
+  } else {
+    if (a->fdroite == NULL) { //Cas ou A a pas de fils droit
+
+    } else { //A et B on tout les deux un fils droit
+      temp = a->fgauche;
+      a->fgauche = a->fgauche->fdroite;
+      temp->fdroite = a;
+    }
+  }
+
+  return temp;
 }
 
 Arbre_AVL_t double_rotation_gauche(Arbre_AVL_t a) {
