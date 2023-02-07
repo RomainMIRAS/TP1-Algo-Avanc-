@@ -10,6 +10,49 @@
 // PARTIE AVL
 /////////////////////////////////////
 
+Arbre_AVL_t lire_arbre (char *nom_fichier)
+{
+  FILE *f ;
+  int cle;
+  Arbre_AVL_t a = NULL;
+  
+  f = fopen (nom_fichier, "r") ;
+
+  while (fscanf (f, "%d", &cle) != EOF)
+    {
+      a =  ajouter_cle_arbre_AVL(a, cle) ;
+      afficher_arbre(a,0) ;
+      printf("--------------------\n");
+    }
+    
+  fclose (f) ;
+
+  return a ;
+}
+
+void afficher_arbre (Arbre_AVL_t a, int niveau)
+{
+  /*
+    affichage de l'arbre a
+    on l'affiche en le penchant sur sa gauche
+    la partie droite (haute) se retrouve en l'air
+  */
+  
+  int i ;
+  
+  if (a != NULL)
+      {
+	afficher_arbre (a->fdroite,niveau+1) ;
+	
+	for (i = 0; i < niveau; i++)
+	  printf ("\t") ;
+	printf (" %d (%d)\n\n", a->cle, niveau) ;
+
+	afficher_arbre (a->fgauche, niveau+1) ;
+      }
+  return ;
+}
+
 Arbre_AVL_t creer_arbre_AVL_vide (){
     Arbre_AVL_t a = malloc(sizeof(noeud_AVL));
     a->bal = 0;
@@ -34,16 +77,14 @@ Arbre_AVL_t equilibrer_arbre(Arbre_AVL_t a)
       return rotation_gauche(a);
     else
     {
-      a->fdroite = rotation_droite(a->fdroite);
-      return rotation_gauche(a);
+      a = double_rotation_gauche(a);
     }
   else if (a->bal == -2)
     if (a->fgauche->bal <= 0)
       return rotation_droite(a);
     else
     {
-      a->fgauche = rotation_gauche(a->fgauche);
-      return rotation_droite(a);
+        a = double_rotation_droite(a);
     }
   else
     return a;
@@ -80,11 +121,36 @@ Arbre_AVL_t rotation_droite(Arbre_AVL_t a) {
 }
 
 Arbre_AVL_t double_rotation_gauche(Arbre_AVL_t a) {
-        return NULL;
-
+    a->fdroite = rotation_droite(a->fdroite);
+    return rotation_gauche(a);
 }
 
 Arbre_AVL_t double_rotation_droite(Arbre_AVL_t a) {
-        return NULL;
+      a->fgauche = rotation_gauche(a->fgauche);
+      return rotation_droite(a);
 }
 
+Arbre_AVL_t getFather(Arbre_AVL_t a,Arbre_AVL_t son){
+
+  if (a == son ){
+    return NULL;
+  } else if (a==NULL) {
+    return NULL;
+  } else {
+    if (a->fdroite == son || a->fgauche == son) return a;
+
+    if (son->cle < a->cle) return getFather(a->fgauche,son);
+    if (son->cle > a->cle) return getFather(a->fgauche,son);
+
+    return NULL;
+
+  }
+}
+
+void update_balance(Arbre_AVL_t a){
+    if (a != NULL){
+        a->bal = hauteur_arbre_AVL(a->fdroite) - hauteur_arbre_AVL(a->fgauche);
+        update_balance(a->fgauche);
+        update_balance(a->fdroite);
+    }
+}
