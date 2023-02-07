@@ -491,6 +491,31 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 /**
  * UNION DES CLEFS DES DEUX ARBRES
 */
-Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2)
-{
+Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2) {
+  Arbre_t current = a1;
+  Arbre_t list = NULL;
+  pfile_t file = creer_file();
+  enfiler(file,current);
+
+  while(!file_vide(file)){
+    current = defiler(file);
+    list = ajouter_cle(list,current->cle);
+    if (current->fgauche != NULL) enfiler(file,current->fgauche);
+    if (current->fdroite != NULL) enfiler(file,current->fdroite);
+  }
+
+  current = a2;
+  file = creer_file();
+  enfiler(file,current);
+
+  while(!file_vide(file)){
+    current = defiler(file);
+    if (!containsKey(a1,current->cle)){
+      list = ajouter_cle(list,current->cle);
+    }
+    if (current->fgauche != NULL) enfiler(file,current->fgauche);
+    if (current->fdroite != NULL) enfiler(file,current->fdroite);
+  }
+
+  return list;
 }
