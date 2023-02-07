@@ -66,3 +66,25 @@ Arbre_AVL_t ajouter_cle_arbre_AVL (Arbre_AVL_t a, int cle){
   a->bal = hauteur_arbre_AVL(a->fdroite) - hauteur_arbre_AVL(a->fgauche);
   return equilibrer_arbre(a);
 }
+
+Arbre_AVL_t supprimer_cle_arbre_AVL (Arbre_AVL_t a, int cle){
+    return NULL;
+}
+
+Arbre_AVL_t rotation_gauche(Arbre_AVL_t a){
+    return NULL;
+}
+
+Arbre_AVL_t rotation_droite(Arbre_AVL_t a) {
+        return NULL;
+}
+
+Arbre_AVL_t double_rotation_gauche(Arbre_AVL_t a) {
+        return NULL;
+
+}
+
+Arbre_AVL_t double_rotation_droite(Arbre_AVL_t a) {
+        return NULL;
+}
+
