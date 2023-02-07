@@ -5,7 +5,7 @@
 
 int main (int argc, char**argv)
 {
-  Arbre_AVL_t a = creer_arbre_AVL_vide();
+//   Arbre_AVL_t a = creer_arbre_AVL_vide();
 
 //   if (argc != 2)
 //     {

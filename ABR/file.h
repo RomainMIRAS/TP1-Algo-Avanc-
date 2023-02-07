@@ -4,6 +4,7 @@
 #ifndef __ABR_H__
   #define __ABR_H__
   #include "abr.h"
+  #include "avl.h"
 #endif
 
 typedef struct {

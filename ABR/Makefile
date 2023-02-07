@@ -4,7 +4,7 @@ abr.o: abr.c abr.h pile.h file.h
 	gcc -Wall -c abr.c
 
 avl.o: avl.c avl.h pile.h file.h
-	gcc -Wall -c abr.c
+	gcc -Wall -c avl.c
 
 pile.o: pile.h pile.c
 	gcc -Wall -c pile.c

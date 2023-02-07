@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "pile.h"
-#include "file.h"
+#define max(a,b) ((a)>(b)?(a):(b))
+
 #include "avl.h"
 
 /////////////////////////////////////
@@ -13,7 +13,7 @@
 Arbre_AVL_t creer_arbre_AVL_vide (){
     Arbre_AVL_t a = malloc(sizeof(noeud_AVL));
     a->bal = 0;
-    a->cle = NULL;
+    a->cle = 0;
     a->fdroite = NULL;
     a->fgauche = NULL;
     return a;

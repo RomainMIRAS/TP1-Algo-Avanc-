@@ -451,7 +451,7 @@ Arbre_t getFather(Arbre_t a,Arbre_t son){
 
 int containsKey(Arbre_t a, int valeur){
   if (a == NULL){
-    return 0;
+    return -1;
   } else {
     if (a->cle == valeur) return 1;
 
@@ -476,7 +476,6 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 
   while(!file_vide(file)){
     current = defiler(file);
-    printf("%d \n", containsKey(a2,current->cle));
     if (containsKey(a2,current->cle)){
       list = ajouter_cle(list,current->cle);
     }
@@ -492,31 +491,6 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
 /**
  * UNION DES CLEFS DES DEUX ARBRES
 */
-Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2) {
-  Arbre_t current = a1;
-  Arbre_t list = NULL;
-  pfile_t file = creer_file();
-  enfiler(file,current);
-
-  while(!file_vide(file)){
-    current = defiler(file);
-    list = ajouter_cle(list,current->cle);
-    if (current->fgauche != NULL) enfiler(file,current->fgauche);
-    if (current->fdroite != NULL) enfiler(file,current->fdroite);
-  }
-
-  current = a2;
-  file = creer_file();
-  enfiler(file,current);
-
-  while(!file_vide(file)){
-    current = defiler(file);
-    if (containsKey(a1,current->cle)){
-      list = ajouter_cle(list,current->cle);
-    }
-    if (current->fgauche != NULL) enfiler(file,current->fgauche);
-    if (current->fdroite != NULL) enfiler(file,current->fdroite);
-  }
-
-  return list;
+Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2)
+{
 }
