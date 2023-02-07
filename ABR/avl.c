@@ -10,6 +10,23 @@
 // PARTIE AVL
 /////////////////////////////////////
 
+Arbre_AVL_t creer_arbre_AVL_vide (){
+    Arbre_AVL_t a = malloc(sizeof(noeud_AVL));
+    a->bal = 0;
+    a->cle = NULL;
+    a->fdroite = NULL;
+    a->fgauche = NULL;
+    return a;
+}
+
+
+int hauteur_arbre_AVL (Arbre_AVL_t a){
+    if (a == NULL)
+        return -1;
+    else
+        return 1 + max(hauteur_arbre_AVL(a->fgauche),hauteur_arbre_AVL(a->fdroite));
+}
+
 Arbre_AVL_t equilibrer_arbre(Arbre_AVL_t a)
 {
   if (a->bal == 2)
@@ -46,6 +63,6 @@ Arbre_AVL_t ajouter_cle_arbre_AVL (Arbre_AVL_t a, int cle){
       a->fdroite = ajouter_cle_arbre_AVL(a->fdroite,cle);
     }
   }
-  a->bal = hauteur(a->fdroite) - hauteur(a->fgauche);
+  a->bal = hauteur_arbre_AVL(a->fdroite) - hauteur_arbre_AVL(a->fgauche);
   return equilibrer_arbre(a);
 }
