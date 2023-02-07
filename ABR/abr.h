@@ -58,12 +58,11 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2) ;
 
 Arbre_t union_deux_arbres (Arbre_t a1, Arbre_t a2) ;
 
-
 /////////////////////////////////////
 // PARTIE AVL
 /////////////////////////////////////
 
-typedef struct n {
+typedef struct noeud_AVL {
 int cle ;
 int bal ; /* balance comprise entre –1 et +1 */
 struct n *fgauche, *fdroite ;

@@ -477,7 +477,7 @@ Arbre_t intersection_deux_arbres (Arbre_t a1, Arbre_t a2)
   while(!file_vide(file)){
     current = defiler(file);
     if (containsKey(a2,current->cle)){
-      list = inserer_cle_arbre(list,current->cle);
+      //list = inserer_cle_arbre(list,current->cle);
     }
     if (current->fgauche != NULL) enfiler(file,current->fgauche);
     if (current->fdroite != NULL) enfiler(file,current->fdroite);
