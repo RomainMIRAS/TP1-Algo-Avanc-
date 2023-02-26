@@ -36,3 +36,6 @@ Arbre_AVL_t getFather(Arbre_AVL_t a,Arbre_AVL_t son);
 
 void update_balance(Arbre_AVL_t a);
 
+Arbre_AVL_t detruire_cle_arbre_avl(Arbre_AVL_t a, int cle);
+
+Arbre_AVL_t rechercher_cle_arbre_avl (Arbre_AVL_t a, int valeur);

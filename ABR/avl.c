@@ -186,3 +186,67 @@ void update_balance(Arbre_AVL_t a){
         update_balance(a->fdroite);
     }
 }
+
+Arbre_AVL_t detruire_cle_arbre_avl(Arbre_AVL_t a, int cle)
+{
+    Arbre_AVL_t keyToDestroy = chercher_cle_arbre_AVL(a,cle);
+    if (keyToDestroy == NULL) return a;
+    Arbre_AVL_t father = getFather(a,keyToDestroy);
+
+    if (keyToDestroy->fgauche == NULL && keyToDestroy->fdroite == NULL){
+        if (father->fgauche == keyToDestroy){
+            father->fgauche = NULL;
+        } else {
+            father->fdroite = NULL;
+        }
+    } else if (keyToDestroy->fgauche == NULL && keyToDestroy->fdroite != NULL){
+        if (father->fgauche == keyToDestroy){
+            father->fgauche = keyToDestroy->fdroite;
+        } else {
+            father->fdroite = keyToDestroy->fdroite;
+        }
+    } else if (keyToDestroy->fgauche != NULL && keyToDestroy->fdroite == NULL){
+        if (father->fgauche == keyToDestroy){
+            father->fgauche = keyToDestroy->fgauche;
+        } else {
+            father->fdroite = keyToDestroy->fgauche;
+        }
+    } else {
+        Arbre_AVL_t temp = keyToDestroy->fgauche;
+        while (temp->fdroite != NULL){
+            temp = temp->fdroite;
+        }
+        Arbre_AVL_t tempFather = getFather(a,temp);
+        if (tempFather->fgauche == temp){
+            tempFather->fgauche = temp->fgauche;
+        } else {
+            tempFather->fdroite = temp->fgauche;
+        }
+        temp->fgauche = keyToDestroy->fgauche;
+        temp->fdroite = keyToDestroy->fdroite;
+        if (father->fgauche == keyToDestroy){
+            father->fgauche = temp;
+        } else {
+            father->fdroite = temp;
+        }
+    }
+
+}
+
+Arbre_AVL_t rechercher_cle_arbre_avl (Arbre_AVL_t a, int valeur)
+{
+  if (a == NULL)
+    return NULL ;
+  else
+    {
+      if (a->cle == valeur)
+	return a ;
+      else
+	{
+	  if (a->cle < valeur)
+	    return rechercher_cle_arbre_avl (a->fdroite, valeur) ;
+	  else
+	    return rechercher_cle_arbre_avl  (a->fgauche, valeur) ;
+	}
+    }
+}
