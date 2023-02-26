@@ -17,4 +17,7 @@ Arbre_AVL_t a ;
   
   afficher_arbre (a,0) ;
 
+  printf(" DESTRUCTION DU FILS GAUCHE DE LA RACINE");
+  a->fgauche = detruire_cle_arbre_avl(a->fgauche, 2);
+  afficher_arbre (a,0) ;
 }
