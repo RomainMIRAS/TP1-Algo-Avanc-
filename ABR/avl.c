@@ -104,6 +104,9 @@ Arbre_AVL_t ajouter_cle_arbre_AVL (Arbre_AVL_t a, int cle){
       a->fdroite = ajouter_cle_arbre_AVL(a->fdroite,cle);
     }
   }
+
+
+  
   a->bal = hauteur_arbre_AVL(a->fdroite) - hauteur_arbre_AVL(a->fgauche);
   return equilibrer_arbre(a);
 }
@@ -113,32 +116,43 @@ Arbre_AVL_t supprimer_cle_arbre_AVL (Arbre_AVL_t a, int cle){
 }
 
 Arbre_AVL_t rotation_gauche(Arbre_AVL_t a){
-    return NULL;
+  Arbre_AVL_t temp;
+  Arbre_AVL_t temp2;
+
+  temp = a->fdroite; // B
+
+  if (temp != NULL) {
+    temp2 = a->fdroite->fgauche; // 2
+    a->fdroite = temp2;
+  } else {
+    a->fdroite = NULL;
+  }
+
+  temp->fgauche = a;
+
+  return temp;
 }
 
 Arbre_AVL_t rotation_droite(Arbre_AVL_t a) {
   Arbre_AVL_t temp;
-
-  if (a->fgauche->fdroite == NULL) { //Cas ou B a pas de fils droit
-    if (a->fdroite == NULL) { //Cas ou B n'a pas de fils droit et A en a un
-
-    } else { //A et B n'ont pas de fils droit et de fils gauche
-
-    }
+  Arbre_AVL_t temp2;
+   
+  temp = a->fgauche; // B
+  
+  if (temp != NULL) {
+    temp2 = a->fgauche->fdroite; // 2
+    a->fgauche = temp2;
   } else {
-    if (a->fdroite == NULL) { //Cas ou A a pas de fils droit
-
-    } else { //A et B on tout les deux un fils droit
-      temp = a->fgauche;
-      a->fgauche = a->fgauche->fdroite;
-      temp->fdroite = a;
-    }
+    a->fgauche = NULL;
   }
+
+  temp->fdroite = a;
 
   return temp;
 }
 
 Arbre_AVL_t double_rotation_gauche(Arbre_AVL_t a) {
+  afficher_arbre(a, 0);
     a->fdroite = rotation_droite(a->fdroite);
     return rotation_gauche(a);
 }
